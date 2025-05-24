@@ -1,49 +1,69 @@
 import { forwardRef, InputHTMLAttributes, TextareaHTMLAttributes } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-interface FormFieldProps {
+interface FormFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   error?: string;
-  type?: 'text' | 'email' | 'password' | 'textarea';
-  placeholder?: string;
+  type?: 'text' | 'email' | 'password' | 'number' | 'tel' | 'url';
 }
 
-const FormField = forwardRef<
-  HTMLInputElement | HTMLTextAreaElement,
-  FormFieldProps & (InputHTMLAttributes<HTMLInputElement> | TextareaHTMLAttributes<HTMLTextAreaElement>)
->(({ label, error, type = 'text', placeholder, className, ...props }, ref) => {
-  const baseInputStyles = 'w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent';
-  const errorStyles = error ? 'border-red-500' : 'border-gray-300';
-
-  return (
-    <div className="space-y-1">
-      <label className="block text-sm font-medium text-gray-700">
-        {label}
-      </label>
-      {type === 'textarea' ? (
-        <textarea
-          ref={ref as React.Ref<HTMLTextAreaElement>}
-          className={twMerge(baseInputStyles, errorStyles, className)}
-          placeholder={placeholder}
-          {...(props as TextareaHTMLAttributes<HTMLTextAreaElement>)}
-        />
-      ) : (
+const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
+  ({ label, error, className, type = 'text', ...props }, ref) => {
+    return (
+      <div className="space-y-2">
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+          {label}
+        </label>
         <input
-          ref={ref as React.Ref<HTMLInputElement>}
+          ref={ref}
           type={type}
-          className={twMerge(baseInputStyles, errorStyles, className)}
-          placeholder={placeholder}
-          {...(props as InputHTMLAttributes<HTMLInputElement>)}
+          className={twMerge(
+            'block w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 shadow-sm placeholder:text-gray-400 focus:border-yellow-500 focus:outline-none focus:ring-1 focus:ring-yellow-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 dark:placeholder:text-gray-500 dark:focus:border-yellow-500 dark:focus:ring-yellow-500',
+            error && 'border-red-500 focus:border-red-500 focus:ring-red-500 dark:border-red-500 dark:focus:border-red-500 dark:focus:ring-red-500',
+            className
+          )}
+          {...props}
         />
-      )}
-      {error && (
-        <p className="text-sm text-red-500">{error}</p>
-      )}
-    </div>
-  );
-});
+        {error && (
+          <p className="text-sm text-red-500 dark:text-red-400">{error}</p>
+        )}
+      </div>
+    );
+  }
+);
 
 FormField.displayName = 'FormField';
+
+interface TextareaFieldProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+  label: string;
+  error?: string;
+}
+
+const TextareaField = forwardRef<HTMLTextAreaElement, TextareaFieldProps>(
+  ({ label, error, className, ...props }, ref) => {
+    return (
+      <div className="space-y-2">
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+          {label}
+        </label>
+        <textarea
+          ref={ref}
+          className={twMerge(
+            'block w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 shadow-sm placeholder:text-gray-400 focus:border-yellow-500 focus:outline-none focus:ring-1 focus:ring-yellow-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 dark:placeholder:text-gray-500 dark:focus:border-yellow-500 dark:focus:ring-yellow-500',
+            error && 'border-red-500 focus:border-red-500 focus:ring-red-500 dark:border-red-500 dark:focus:border-red-500 dark:focus:ring-red-500',
+            className
+          )}
+          {...props}
+        />
+        {error && (
+          <p className="text-sm text-red-500 dark:text-red-400">{error}</p>
+        )}
+      </div>
+    );
+  }
+);
+
+TextareaField.displayName = 'TextareaField';
 
 interface InputProps extends HTMLAttributes<HTMLInputElement> {
   error?: boolean;
@@ -113,4 +133,4 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
 
 Select.displayName = 'Select';
 
-export { FormField, Input, Textarea, Select }; 
+export { FormField, Input, Textarea, Select, TextareaField }; 

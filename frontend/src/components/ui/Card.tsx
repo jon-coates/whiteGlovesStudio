@@ -1,79 +1,79 @@
-import { forwardRef, HTMLAttributes } from 'react';
-import { twMerge } from 'tailwind-merge';
+import { ReactNode } from 'react';
 
-interface CardProps extends HTMLAttributes<HTMLDivElement> {}
+interface CardProps {
+  children: ReactNode;
+  className?: string;
+}
 
-const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ className, ...props }, ref) => {
-    return (
-      <div
-        ref={ref}
-        className={twMerge(
-          'rounded-lg border border-gray-200 bg-white shadow-sm',
-          className
-        )}
-        {...props}
-      />
-    );
-  }
-);
+export const Card = ({ children, className = '' }: CardProps) => {
+  return (
+    <div className={`rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900 ${className}`}>
+      {children}
+    </div>
+  );
+};
 
-Card.displayName = 'Card';
+interface CardHeaderProps {
+  children: ReactNode;
+  className?: string;
+}
 
-const CardHeader = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...props }, ref) => {
-    return (
-      <div
-        ref={ref}
-        className={twMerge('px-6 py-4 border-b border-gray-200', className)}
-        {...props}
-      />
-    );
-  }
-);
+export const CardHeader = ({ children, className = '' }: CardHeaderProps) => {
+  return (
+    <div className={`mb-4 ${className}`}>
+      {children}
+    </div>
+  );
+};
 
-CardHeader.displayName = 'CardHeader';
+interface CardTitleProps {
+  children: ReactNode;
+  className?: string;
+}
 
-const CardTitle = forwardRef<HTMLHeadingElement, HTMLAttributes<HTMLHeadingElement>>(
-  ({ className, ...props }, ref) => {
-    return (
-      <h3
-        ref={ref}
-        className={twMerge('text-lg font-semibold text-gray-900', className)}
-        {...props}
-      />
-    );
-  }
-);
+export const CardTitle = ({ children, className = '' }: CardTitleProps) => {
+  return (
+    <h3 className={`text-lg font-semibold text-gray-900 dark:text-gray-100 ${className}`}>
+      {children}
+    </h3>
+  );
+};
 
-CardTitle.displayName = 'CardTitle';
+interface CardDescriptionProps {
+  children: ReactNode;
+  className?: string;
+}
 
-const CardContent = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...props }, ref) => {
-    return (
-      <div
-        ref={ref}
-        className={twMerge('px-6 py-4', className)}
-        {...props}
-      />
-    );
-  }
-);
+export const CardDescription = ({ children, className = '' }: CardDescriptionProps) => {
+  return (
+    <p className={`text-sm text-gray-500 dark:text-gray-400 ${className}`}>
+      {children}
+    </p>
+  );
+};
 
-CardContent.displayName = 'CardContent';
+interface CardContentProps {
+  children: ReactNode;
+  className?: string;
+}
 
-const CardFooter = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...props }, ref) => {
-    return (
-      <div
-        ref={ref}
-        className={twMerge('px-6 py-4 border-t border-gray-200', className)}
-        {...props}
-      />
-    );
-  }
-);
+export const CardContent = ({ children, className = '' }: CardContentProps) => {
+  return (
+    <div className={className}>
+      {children}
+    </div>
+  );
+};
 
-CardFooter.displayName = 'CardFooter';
+interface CardFooterProps {
+  children: ReactNode;
+  className?: string;
+}
 
-export { Card, CardHeader, CardTitle, CardContent, CardFooter }; 
+export const CardFooter = ({ children, className = '' }: CardFooterProps) => {
+  return (
+    <div className={`mt-4 flex items-center justify-between ${className}`}>
+      {children}
+    </div>
+  );
+}; 

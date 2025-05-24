@@ -8,9 +8,19 @@ export default {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
+        // Semantic colors
+        background: {
+          DEFAULT: 'var(--background)',
+          dark: 'var(--background-dark)',
+        },
+        foreground: {
+          DEFAULT: 'var(--foreground)',
+          dark: 'var(--foreground-dark)',
+        },
         // Monochromatic colors
         gray: {
           50: '#fafafa',
