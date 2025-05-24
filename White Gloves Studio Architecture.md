@@ -316,8 +316,8 @@ PAYLOAD_URL=https://cms.whiteglovesstudio.com.au
 REVALIDATE_SECRET=your-secret-key
 
 # Backend (.env)
-***REMOVED******REMOVED***your-mongodb-connection
-***REMOVED***your-payload-secret
+DATABASE_URI=mongodb://your-mongodb-connection
+PAYLOAD_SECRET=your-payload-secret
 SERVER_URL=https://cms.whiteglovesstudio.com.au
 CLOUDINARY_CLOUD_NAME=your-cloud-name
 CLOUDINARY_API_KEY=your-api-key
