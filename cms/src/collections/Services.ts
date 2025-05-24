@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { SEO } from '../fields/SEO'
 
 export const Services: CollectionConfig = {
   slug: 'services',
@@ -85,27 +86,7 @@ export const Services: CollectionConfig = {
         },
       ],
     },
-    {
-      name: 'seo',
-      type: 'group',
-      fields: [
-        {
-          name: 'metaTitle',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'metaDescription',
-          type: 'textarea',
-          required: true,
-        },
-        {
-          name: 'ogImage',
-          type: 'upload',
-          relationTo: 'media',
-        },
-      ],
-    },
+    SEO,
     {
       name: 'featuredImage',
       type: 'upload',
