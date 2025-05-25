@@ -38,7 +38,7 @@ export const ThemeToggle = () => {
       variant="outline"
       size="sm"
       onClick={toggleTheme}
-      className="w-9 h-9 p-0 hover:bg-gray-100 dark:hover:bg-gray-800 dark:border-gray-700"
+      className="w-9 h-9 p-0 border-0 hover:bg-gray-100 dark:hover:bg-gray-800 dark:border-gray-700"
       aria-label="Toggle theme"
     >
       {isDark ? (

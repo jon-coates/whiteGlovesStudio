@@ -19,7 +19,7 @@ export const Header = () => {
             </Link>
           </div>
           <div className="flex items-center space-x-4">
-            <Navigation />
+            <Navigation isMenuOpen={isMenuOpen} onMenuClose={() => setIsMenuOpen(false)} />
             <div className="hidden md:block">
               <Button variant="primary" size="sm">
                 Get a Quote
@@ -27,8 +27,8 @@ export const Header = () => {
             </div>
             <ThemeToggle />
             <button
-              className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-yellow-500 md:hidden"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-yellow-500 dark:text-gray-300 dark:hover:bg-gray-800 md:hidden"
             >
               <span className="sr-only">Open main menu</span>
               <svg

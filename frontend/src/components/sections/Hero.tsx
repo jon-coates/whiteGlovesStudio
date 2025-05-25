@@ -8,10 +8,10 @@ export const Hero = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative z-10 mx-auto max-w-2xl text-center">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-6xl">
-            Preserving Your Memories with Care
+            Preserving Your Family&apos;s Memories with Care
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
-            Professional archival, conservation, and digitization services for your precious documents, photographs, and artifacts. Trust your memories to our expert team.
+            Professional archival, conservation, and digitisation services for your precious documents, photographs, and artifacts. Trust your memories to our expert team.
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <Button variant="primary" size="lg">
